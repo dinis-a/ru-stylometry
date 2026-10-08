@@ -31,4 +31,4 @@ __all__ = [
     "extract_features",
     "feature_names",
 ]
-__version__ = "0.1.0"
+__version__ = "0.1.1"

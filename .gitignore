@@ -10,6 +10,11 @@
 !/src/
 !/src/ru_stylometry/
 !/src/ru_stylometry/**
+!/tests/
+!/tests/**
+/tests/test_colab_notebook.py
+/tests/test_compare_neural.py
+/tests/test_experiments_helpers.py
 
 __pycache__/
 *.py[cod]

@@ -90,5 +90,3 @@ extend-exclude = "/\\.cache/"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-# Temporary files stay inside the project (the directory is ignored by git).
-addopts = "--basetemp=.cache/pytest-tmp"

@@ -5,8 +5,9 @@ from machine-generated text (and, if asked, the model family behind it) with an 
 every decision.
 
 > **Status: alpha.** The feature extractor, the scikit-learn transformer, the classifier with
-> explanations, the evaluation tools and the command-line interface are implemented. The package is
-> not on the main PyPI index yet; test builds are published to TestPyPI.
+> explanations, the evaluation tools and the command-line interface are implemented and tested. The
+> package is not on the main PyPI index yet; test builds are published to
+> [TestPyPI](https://test.pypi.org/project/ru-stylometry/).
 
 It continues [`stylometric-ai-detector`](https://pypi.org/project/stylometric-ai-detector/), an
 English baseline built on 8 surface features. Those features are mostly raw counts that reflect
@@ -209,14 +210,15 @@ families) the macro-F1 is 0.446 against 0.195 for the 8 legacy features.
 
 ```bash
 pip install -e .[dev]
+pytest                   # the test suite in tests/
 isort . && black .       # style: black and isort, line length 100 (see pyproject.toml)
 python -m build          # sdist and wheel in dist/
 ```
 
-Pushing a version tag (`git tag v0.1.0 && git push origin v0.1.0`) starts the GitHub Actions
-workflow: it checks the style, installs the package on Python 3.9-3.12, builds it and uploads it to
-TestPyPI with the repository secret `TESTPYPI_TOKEN`. TestPyPI accepts a version only once, so raise
-`__version__` in `src/ru_stylometry/__init__.py` before tagging.
+Pushing a version tag (`git tag v0.1.1 && git push origin v0.1.1`) starts the GitHub Actions
+workflow: it checks the style, runs the tests on Python 3.9-3.12, builds the package and uploads it
+to TestPyPI with the repository secret `TESTPYPI_TOKEN`. TestPyPI accepts a version only once, so
+raise `__version__` in `src/ru_stylometry/__init__.py` before tagging.
 
 ## License
 
