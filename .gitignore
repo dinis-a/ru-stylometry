@@ -1,0 +1,16 @@
+*
+
+!/.gitignore
+!/LICENSE
+!/README.md
+!/pyproject.toml
+!/.github/
+!/.github/workflows/
+!/.github/workflows/ci.yml
+!/src/
+!/src/ru_stylometry/
+!/src/ru_stylometry/**
+
+__pycache__/
+*.py[cod]
+*.egg-info/

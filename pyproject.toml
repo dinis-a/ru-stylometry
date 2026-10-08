@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ru-stylometry"
+dynamic = ["version"]
+description = "Interpretable stylometric features for Russian text and tools for detecting AI-generated text."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [
+    {name = "Dinis"},
+]
+keywords = [
+    "nlp",
+    "stylometry",
+    "russian",
+    "feature-extraction",
+    "text-classification",
+    "ai-detection",
+    "scikit-learn",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: Russian",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.21",
+    "joblib>=1.1",
+    "scikit-learn>=1.2",
+    "pymorphy3>=1.2",
+    "pymorphy3-dicts-ru",
+]
+
+[project.optional-dependencies]
+# C extension that roughly halves the cost of parsing words missing from the cache.
+fast = ["pymorphy3[fast]"]
+# Packages used by the scripts in experiments/ and for reading Parquet files.
+experiments = ["pandas>=2.0", "pyarrow>=14", "huggingface_hub>=0.20", "tabulate"]
+dev = [
+    "pytest>=7.0",
+    "isort>=5.0",
+    "black>=23.0",
+    "build>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/dinis-a/ru-stylometry"
+Repository = "https://github.com/dinis-a/ru-stylometry"
+Issues = "https://github.com/dinis-a/ru-stylometry/issues"
+
+[project.scripts]
+ru-stylometry = "ru_stylometry.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "ru_stylometry.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ru_stylometry = ["py.typed"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+src_paths = ["src", "tests"]
+# Notebook cells keep their own import order (some imports must follow sys.path changes).
+skip_glob = ["notebooks/cells/*", ".cache/*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+# Tool caches and scratch files live in .cache/ and are not part of the project.
+extend-exclude = "/\\.cache/"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Temporary files stay inside the project (the directory is ignored by git).
+addopts = "--basetemp=.cache/pytest-tmp"
