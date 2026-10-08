@@ -6,7 +6,7 @@ every decision.
 
 > **Status: alpha.** The feature extractor, the scikit-learn transformer, the classifier with
 > explanations, the evaluation tools and the command-line interface are implemented and tested. The
-> package is not on the main PyPI index yet; test builds are published to
+> package is on [PyPI](https://pypi.org/project/ru-stylometry/); test builds are published to
 > [TestPyPI](https://test.pypi.org/project/ru-stylometry/).
 
 It continues [`stylometric-ai-detector`](https://pypi.org/project/stylometric-ai-detector/), an
@@ -16,21 +16,24 @@ documented vector of 66 features that are normalised by text length and use Russ
 
 ## Installation
 
+```bash
+pip install ru-stylometry                  # library and command-line tool
+pip install "ru-stylometry[fast]"          # + C backend that speeds up morphological analysis
+pip install "ru-stylometry[experiments]"   # + pandas, pyarrow, ...: reading Parquet tables
+```
+
+The latest code can be installed straight from GitHub, and a clone of the repository can be
+installed for development:
+
+```bash
+pip install git+https://github.com/dinis-a/ru-stylometry.git   # the latest code from GitHub
+pip install -e .[dev]                                          # from a clone: + pytest, black, isort, build
+```
+
 Test builds come from TestPyPI; the second index supplies the dependencies:
 
 ```bash
 pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ ru-stylometry
-```
-
-Once the package is released on PyPI, `pip install ru-stylometry` is enough. The latest code can be
-installed straight from GitHub, and from a clone of the repository with extras:
-
-```bash
-pip install git+https://github.com/dinis-a/ru-stylometry.git   # the latest code from GitHub
-pip install .                # from a clone: library and command-line tool
-pip install .[fast]          # + C backend that speeds up morphological analysis
-pip install .[experiments]   # + pandas, pyarrow, ...: reading Parquet tables
-pip install -e .[dev]        # editable install + pytest, black, isort, build
 ```
 
 Python 3.9+ is required. Dependencies: numpy, scikit-learn, joblib, pymorphy3.

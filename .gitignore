@@ -4,6 +4,7 @@
 !/LICENSE
 !/README.md
 !/pyproject.toml
+!/MANIFEST.in
 !/.github/
 !/.github/workflows/
 !/.github/workflows/ci.yml
